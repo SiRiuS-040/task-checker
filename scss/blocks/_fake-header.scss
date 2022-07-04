@@ -1,0 +1,46 @@
+.fake-header {
+    position: sticky;
+    top: 0;
+    background-color: var(--gray-200);
+    border-bottom: 1px solid var(--gray-200);
+    width: 100%;
+    z-index: 10;
+    transition: $transition-basic;
+
+    @media (min-width: $tablet-width) {
+        width: auto;
+        overflow: scroll;
+    }
+
+    @media (min-width: $desktop-width) {
+        overflow: visible;
+        position: static;
+        top: auto;
+    }
+
+    &.hide {
+        top: -55px;
+        opacity: 1;
+    }
+}
+
+.fake-header__wrapper {
+    height: 54px;
+    width: 100vw;
+    background-color: var(--gray-200);
+    background-image: url(../img/topnav-plug.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    @media (min-width: $tablet-width) {
+        width: 1140px;
+        background-image: url(../img/topnav-plug-dt.png);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+
+    @media (min-width: $desktop-width) {
+        margin: 0 auto;
+    }
+}

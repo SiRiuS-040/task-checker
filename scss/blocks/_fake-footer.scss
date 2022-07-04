@@ -1,0 +1,15 @@
+.fake-footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 54px;
+    background-color: gray;
+    background-image: url(../img/botnav-plug.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    z-index: 10;
+
+    @media (min-width: $tablet-width) {
+        display: none;
+    }
+}

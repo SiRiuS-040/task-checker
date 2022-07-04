@@ -1,0 +1,108 @@
+.cell-schedule__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 0;
+    margin-top: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.cell-schedule__date-data {
+    width: 0;
+    height: 0;
+    visibility: hidden;
+}
+
+.schedule-item {
+    margin-top: 8px;
+}
+
+.schedule-item__wrapper {
+    padding-left: 10px;
+    position: relative;
+
+    &::before {
+        position: absolute;
+        content: "";
+        left: 0px;
+        width: 4px;
+        height: 100%;
+        border-radius: 2px;
+        background-color: transparent;
+    }
+
+    &--videocall {
+        &::before {
+            background-color: var(--blue-600);
+        }
+    }
+
+    &--phonecall {
+        &::before {
+            background-color: var(--emerald-300);
+        }
+    }
+}
+
+.schedule-item__type {
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        width: 16px;
+        height: 16px;
+
+        background-size: 16px 16px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &--videocall {
+        &::before {
+            background-image: url(../img/icons/icon-schedule-videocall.svg);
+        }
+    }
+    &--office {
+        &::before {
+            background-image: url(../img/icons/icon-schedule-office.svg);
+        }
+    }
+    &--phonecall {
+        &::before {
+            background-image: url(../img/icons/icon-schedule-phonecall.svg);
+        }
+    }
+    &--test {
+        &::before {
+            background-image: url(../img/icons/icon-schedule-test.svg);
+        }
+    }
+    &--offer {
+        &::before {
+            background-image: url(../img/icons/icon-schedule-offer.svg);
+        }
+    }
+    &--work {
+        &::before {
+            background-image: url(../img/icons/icon-schedule-work.svg);
+        }
+    }
+}
+
+.schedule-item__title {
+    margin-left: 20px;
+    font-size: var(--text-12);
+    line-height: var(--lh-14);
+    font-weight: var(--fw-400);
+    color: var(--gray-900);
+}
+
+.schedule-item__time-period {
+    margin-top: 3px;
+    font-size: var(--text-12);
+    line-height: var(--lh-14);
+    font-weight: var(--fw-400);
+    color: var(--gray-700);
+}

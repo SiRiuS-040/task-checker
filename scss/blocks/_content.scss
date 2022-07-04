@@ -1,0 +1,55 @@
+.calendar-content {
+    margin-bottom: 16px;
+    transition: $transition-basic;
+
+    @media (min-width: $tablet-width) {
+        margin-bottom: 0;
+        margin-left: 78px;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        background-color: var(--white);
+        border-radius: 16px;
+        box-shadow: none;
+        min-height: calc(100vh - 44px - 52px);
+        transition: $transition-basic;
+    }
+
+    @media (min-width: $desktop-width) {
+        margin-left: calc((100% - 1062px + 78px) / 2);
+        width: 1062px;
+        position: relative;
+        transition: $transition-basic;
+    }
+
+    &.fullscreen-active {
+        transition: $transition-basic;
+
+        @media (min-width: $tablet-width) {
+            transition: $transition-basic;
+        }
+
+        @media (min-width: $desktop-width) {
+            transition: $transition-basic;
+            margin-right: 0;
+            margin-left: 98px;
+            width: calc(100% - 98px - 20px);
+        }
+
+        &.side-menu-full {
+            transition: $transition-basic;
+            @media (min-width: $tablet-width) {
+            }
+            @media (min-width: $desktop-width) {
+                transition: $transition-basic;
+                margin-right: 0;
+                margin-left: 295px;
+                width: calc(100% - 275px - 40px);
+            }
+        }
+    }
+}
+
+.main__menu {
+    position: sticky;
+    bottom: 0;
+}

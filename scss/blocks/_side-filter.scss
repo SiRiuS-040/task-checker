@@ -1,0 +1,426 @@
+.task-filter {
+    // overflow-x: hidden;
+
+    // position: absolute;
+    top: 40px;
+    right: 0;
+    margin-right: 0;
+    margin-left: auto;
+
+    background-color: var(--white);
+    // background-color: red;
+
+    &.minimized {
+        // position: static;
+        & .task-filter__list {
+            margin-bottom: 10px;
+        }
+
+        & .task-filter__title {
+            margin: 0;
+            padding: 0;
+            width: 50px;
+            height: 40px;
+            height: 38px;
+
+            margin-top: 40px;
+
+            // border-bottom: none;
+
+            // margin-left: 4px;
+
+            // border: 1px solid green;
+
+            &::before {
+                left: 12px;
+                display: block;
+            }
+        }
+
+        & .task-filter__title-desc {
+            display: none;
+        }
+
+        // & .task-filter__label-checkbox {
+        //     margin: 0;
+        //     padding: 0;
+        //     width: 50px;
+        //     height: 38px;
+        // }
+
+        // & .task-filter__label {
+        //     width: 50px;
+        //     height: 40px;
+        //     height: 38px;
+        //     opacity: 0.5;
+
+        //     &:before {
+        //         left: 13px;
+        //         width: 24px;
+        //         height: 24px;
+        //     }
+        // }
+
+        & .task-filter__label-desc {
+            width: 0;
+            height: 0;
+            display: none;
+        }
+
+        & .task-filter__input-checkbox-special,
+        .task-filter__input-checkbox {
+            display: none;
+        }
+
+        & .task-filter__checkbox-icon {
+            display: none;
+        }
+    }
+}
+
+.task-filter__title {
+    font-size: var(--text-12);
+    line-height: var(--lh-14);
+    font-weight: var(--fw-500);
+    color: var(--gray-850);
+
+    margin-top: 24px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--gray-300);
+    // border-bottom: 1px solid red;
+
+    position: relative;
+
+    &::before {
+        display: none;
+        position: absolute;
+        content: "";
+        top: calc(50% - 12px);
+        left: 8px;
+
+        width: 24px;
+        height: 24px;
+        border-radius: 3px;
+
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 16px 16px;
+    }
+
+    &--employer {
+        // overflow: hidden;
+        &::before {
+            background-image: url(../img/icons/icon-schedule-employer.svg);
+            background-color: var(--orange-600);
+        }
+    }
+}
+
+.task-filter__title-desc {
+    white-space: nowrap;
+}
+
+.task-filter__list {
+    margin: 0;
+    padding: 0;
+    width: 50px;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .task-filter__label-checkbox-special {
+        display: block;
+        height: 32px;
+        width: 32px;
+        margin-bottom: 8px;
+    }
+
+    .task-filter__label-checkbox {
+        display: block;
+        height: 32px;
+        width: 32px;
+        cursor: pointer;
+        position: relative;
+        display: block;
+        margin-bottom: 6px;
+        font-size: var(--text-13);
+        line-height: var(--lh-16);
+        font-weight: var(--fw-400);
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+
+.task-filter__input-checkbox-special,
+.task-filter__input-checkbox {
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 0px;
+    z-index: -1;
+    opacity: 0;
+    width: 16px !important;
+    height: 16px !important;
+
+    /* стили при наведении курсора на checkbox */
+    &:not(:disabled):not(:checked) + span:hover::before {
+    }
+
+    /* стили для активного чекбокса (при нажатии на него) */
+    &:not(:disabled):active + span::before {
+    }
+
+    /* стили для чекбокса, находящегося в фокусе */
+    &:focus + span::before {
+    }
+
+    /* стили для чекбокса, находящегося в фокусе и не находящегося в состоянии checked */
+    &:focus:not(:checked) + span::before {
+    }
+    /* стили для чекбокса, находящегося в состоянии checked */
+
+    &:checked + span::before {
+        background-image: url(../img/icons/icon-checkbox-checked.svg);
+        background-color: var(--orange-600);
+        border: 1px solid transparent;
+    }
+
+    &:checked + span.semi-checked::before {
+        background-image: url(../img/icons/icon-checkbox-checked-semi.svg);
+        background-color: var(--orange-600);
+        border: 1px solid transparent;
+    }
+
+    &:checked ~ .task-filter__label {
+        color: var(--gray-850);
+    }
+
+    &:checked ~ .task-filter__label::before {
+        // background-color: red;
+    }
+
+    &:checked ~ .task-filter__label {
+        // border: 1px solid transparent;
+        opacity: 1;
+    }
+
+    &:not(:checked) ~ .task-filter__label {
+        opacity: 1;
+
+        &::before {
+            border: 1px solid transparent;
+            background-color: transparent;
+        }
+    }
+
+    &:not(:checked) ~ .task-filter__label--all-tasks {
+        &::before {
+            opacity: 0.5;
+        }
+    }
+
+    /* стили для чекбокса, находящегося в состоянии disabled */
+    &:disabled + span::before {
+    }
+
+    &:hover ~ .task-filter__label {
+        color: var(--gray-900);
+    }
+
+    &:hover:not(:checked) ~ .task-filter__label {
+        color: var(--gray-900);
+    }
+}
+
+.task-filter__label {
+    margin: 0 auto;
+    white-space: nowrap;
+    display: block;
+    width: 32px;
+    height: 32px;
+    font-size: var(--text-13);
+    line-height: var(--lh-16);
+    font-weight: var(--fw-400);
+    color: var(--gray-600);
+    position: relative;
+    transition: $transition-basic;
+
+    &::before {
+        position: absolute;
+        content: "";
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 20px 20px;
+    }
+
+    &::after {
+        opacity: 0;
+        visibility: hidden;
+        position: absolute;
+        content: "";
+        right: 5px;
+        top: calc(50% - 10px);
+        margin-right: 40px;
+        padding: 3px 8px;
+        color: var(--white);
+        font-size: var(--text-11);
+        line-height: var(--lh-14);
+        font-weight: var(--fw-400);
+        color: var(--white);
+        background-color: var(--gray-850);
+        border-radius: 4px;
+    }
+
+    &:hover {
+        &:after {
+            opacity: 1;
+            visibility: visible;
+            transition: $transition-basic;
+            z-index: 10;
+        }
+    }
+
+    &--all-tasks {
+        width: 32px;
+        height: 32px;
+
+        &::before {
+            background-size: 32px 32px;
+            background-image: url(../img/icons/icon-schedule-employer.svg);
+            background-color: var(--orange-600);
+        }
+
+        &:hover {
+            &:after {
+                content: "Все задачи";
+            }
+        }
+    }
+
+    &--videocall {
+        &::before {
+            border: 1px solid var(--blue-600);
+            background-image: url(../img/icons/icon-schedule-videocall.svg);
+            background-color: var(--blue-100);
+        }
+        &:hover {
+            &:after {
+                content: "Видеособеседование";
+            }
+            &::before {
+                background-color: var(--blue-100);
+            }
+        }
+    }
+    &--office {
+        &::before {
+            border: 1px solid var(--red-300);
+            background-image: url(../img/icons/icon-schedule-office.svg);
+            background-color: var(--red-100);
+        }
+        &:hover {
+            &:after {
+                content: "Интервью в офисе";
+            }
+            &::before {
+                background-color: var(--red-100);
+            }
+        }
+    }
+    &--phonecall {
+        &::before {
+            border: 1px solid var(--green-700);
+            background-image: url(../img/icons/icon-schedule-phonecall.svg);
+            background-color: var(--green-50);
+        }
+        &:hover {
+            &::before {
+                background-color: var(--green-50);
+            }
+            &:after {
+                content: "Аудиозвонок";
+            }
+        }
+    }
+    &--test {
+        &::before {
+            border: 1px solid var(--gray-850);
+            background-image: url(../img/icons/icon-schedule-test.svg);
+            background-color: var(--gray-200);
+        }
+        &:hover {
+            &:after {
+                content: "Тестовое задание";
+            }
+            &::before {
+                background-color: var(--gray-200);
+            }
+        }
+    }
+    &--offer {
+        &::before {
+            border: 1px solid var(--emerald-300);
+            background-image: url(../img/icons/icon-schedule-offer.svg);
+            background-color: var(--emerald-50);
+        }
+        &:hover {
+            &:after {
+                content: "Предложение о работе";
+            }
+            &::before {
+                background-color: var(--emerald-50);
+            }
+        }
+    }
+    &--work {
+        &::before {
+            border: 1px solid var(--orange-600);
+            background-image: url(../img/icons/icon-schedule-work.svg);
+            background-color: var(--orange-200);
+        }
+        &:hover {
+            &:after {
+                content: "Выход на работу";
+            }
+            &::before {
+                background-color: var(--orange-200);
+            }
+        }
+    }
+}
+
+.task-filter__checkbox-icon {
+    display: inline-flex;
+    align-items: center;
+    user-select: none;
+    position: absolute;
+    top: calc(50% - 8px);
+    right: 0px;
+    width: 16px;
+    height: 16px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        background-color: var(--gray-100);
+        border: 1px solid var(--gray-600);
+        box-sizing: border-box;
+        border-radius: 2px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 16px 16px;
+    }
+}

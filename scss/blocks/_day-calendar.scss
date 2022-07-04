@@ -1,0 +1,396 @@
+.day-calendar {
+    display: grid;
+    grid-template-rows: 0px 1fr;
+    grid-gap: 10px;
+
+    &.disabled {
+        display: none;
+    }
+    .grid-wrapper {
+        display: grid;
+        grid-template-columns: 30px 1fr;
+        grid-gap: 10px;
+
+        &--day-grid {
+            position: relative;
+            padding-top: 15px;
+            height: 70vh;
+            height: calc(100vh - 200px);
+            overflow-y: scroll;
+            scrollbar-color: var(--gray-300) transparent;
+            scrollbar-width: thin;
+
+            &::-webkit-scrollbar-thumb {
+                width: 5px;
+                background: var(--gray-300);
+                border-radius: 4px;
+            }
+
+            &::-webkit-scrollbar {
+                width: 5px;
+            }
+        }
+    }
+
+    .weekdays {
+        display: grid;
+        grid-template-columns: 1fr;
+        position: relative;
+    }
+
+    .day-legend__item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+
+        &.current {
+            .day-legend__item-legend {
+                font-size: var(--text-12);
+                line-height: var(--lh-20);
+                font-weight: var(--fw-600);
+                color: var(--gray-900);
+            }
+
+            .day-legend__item-date {
+                font-size: var(--text-16);
+                line-height: var(--lh-22);
+                font-weight: var(--fw-600);
+                color: var(--gray-900);
+            }
+        }
+    }
+
+    .day-legend__item-legend {
+        text-align: center;
+        font-size: var(--text-18);
+        line-height: var(--lh-20);
+        font-weight: var(--fw-600);
+        color: var(--gray-850);
+    }
+
+    .day-wrapper__time-legend-list {
+        position: relative;
+    }
+    // таймлайн
+    .day-wrapper__time-line {
+        position: absolute;
+        margin-top: -5px;
+        top: 0%;
+        left: 0;
+        border-radius: 4px;
+        z-index: 2;
+
+        &--day-legend {
+            margin-top: -14px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+            background-color: var(--white);
+            font-size: var(--text-12);
+            line-height: var(--lh-14);
+            font-weight: var(--fw-600);
+            color: var(--blue-600);
+            display: block;
+        }
+
+        &--day-grid {
+            width: 100%;
+            &:before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 1px;
+                background-color: var(--blue-400);
+            }
+        }
+    }
+
+    .day-wrapper__time-legend-item {
+        height: 94px;
+    }
+    .day-wrapper__time-legend-desc {
+        font-size: var(--text-12);
+        line-height: var(--lh-14);
+        font-weight: var(--fw-400);
+        color: var(--gray-700);
+        text-align: left;
+    }
+
+    .day-grid__column {
+        overflow-x: hidden;
+        position: relative;
+        box-shadow: 1px 0px 0px 0px var(--gray-300) inset;
+
+        &.current {
+            & .day-grid__time-dot {
+                margin-top: -5px;
+                z-index: 4;
+                position: absolute;
+                left: 0;
+                display: block;
+                width: 100%;
+                &::after {
+                    position: absolute;
+                    content: "";
+                    margin-top: 0px;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 1px;
+                    background-color: var(--blue-800);
+                }
+                &:before {
+                    position: absolute;
+                    content: "";
+                    margin-top: -4px;
+                    top: 0;
+                    left: 0;
+                    width: 9px;
+                    height: 9px;
+                    border-radius: 50%;
+                    background-color: var(--blue-400);
+                }
+            }
+        }
+    }
+
+    .day-grid__time-cell {
+        overflow: hidden;
+        cursor: pointer;
+        height: 94px;
+        overflow-x: hidden;
+        display: grid;
+        grid-template-columns: 1fr;
+        &:nth-child(4n + 1) {
+        }
+        &:nth-child(2n) {
+            box-shadow: 0px 1px 0px 0px var(--gray-300) inset;
+        }
+        &:last-child {
+            box-shadow: 0px -1px 0px 0px var(--gray-300) inset;
+        }
+    }
+}
+
+.day-calendar {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    opacity: 1;
+    transition: $transition-basic;
+    transform: translateX(0px);
+
+    &.move-left {
+        animation: 200ms move-left;
+        // transition-timing-function: cubic-bezier(0, 0.245, 0.355, 0.99);
+    }
+
+    &.move-right {
+        animation: 200ms move-right;
+        // transition-timing-function: cubic-bezier(0, 0.245, 0.355, 0.99);
+    }
+
+    &.hidden {
+        opacity: 0;
+    }
+
+    .cell-schedule__date-data {
+        width: 0;
+        height: 0;
+        visibility: hidden;
+        display: block;
+    }
+
+    .cell-schedule__item-wrapper {
+        overflow: hidden;
+    }
+
+    .schedule-item {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        padding-left: 20px;
+        overflow: hidden;
+
+        &::before {
+            position: absolute;
+            content: "";
+            left: 0px;
+            width: 3px;
+            height: 100%;
+        }
+
+        &--main {
+            order: -1;
+        }
+
+        &--videocall {
+            background-color: var(--blue-200);
+            &::before {
+                background-color: var(--blue-600);
+            }
+        }
+
+        &--office {
+            background-color: var(--red-100);
+            &::before {
+                background-color: var(--red-300);
+            }
+        }
+
+        &--phonecall {
+            background-color: var(--emerald-50);
+            &::before {
+                background-color: var(--emerald-300);
+            }
+        }
+
+        &--test {
+            background-color: var(--gray-300);
+            &::before {
+                background-color: var(--purple-800);
+            }
+        }
+
+        &--offer {
+            background-color: var(--green-100);
+            &::before {
+                background-color: var(--emerald-300);
+            }
+        }
+
+        &--work {
+            background-color: var(--orange-200);
+            &::before {
+                background-color: var(--orange-700);
+            }
+        }
+    }
+
+    .schedule-item__type {
+        order: 4;
+        margin-top: 8px;
+        display: block;
+        align-self: start;
+
+        &::before {
+            font-size: var(--text-12);
+            line-height: var(--lh-14);
+            font-weight: var(--fw-500);
+            height: 24px;
+            padding: 5px;
+            border-radius: 4px;
+            background-color: white;
+            color: var(--gray-1000);
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        &--videocall {
+            &::before {
+                content: "Видео";
+                color: var(--blue-600);
+            }
+        }
+        &--office {
+            &::before {
+                content: "Офис";
+                color: var(--red-300);
+            }
+        }
+        &--phonecall {
+            &::before {
+                content: "Аудио";
+                color: var(--emerald-300);
+            }
+        }
+        &--test {
+            &::before {
+                content: "Тест";
+                color: var(--purple-800);
+            }
+        }
+        &--offer {
+            &::before {
+                content: "Оффер";
+                color: var(--green-1000);
+            }
+        }
+        &--work {
+            &::before {
+                content: "Выход";
+                color: var(--orange-700);
+            }
+        }
+    }
+
+    .schedule-item__type-title {
+        display: none;
+        padding-top: 2px;
+        font-size: var(--text-12);
+        line-height: var(--lh-14);
+        font-weight: var(--fw-400);
+        margin-left: 20px;
+        &--videocall {
+            color: var(--blue-600);
+        }
+        &--office {
+            color: var(--red-300);
+        }
+        &--phonecall {
+            color: var(--emerald-300);
+        }
+        &--test {
+            color: var(--purple-800);
+        }
+        &--offer {
+            color: var(--green-1000);
+        }
+        &--work {
+            color: var(--orange-700);
+        }
+    }
+    .schedule-item__title {
+        order: -1;
+        margin-top: 10px;
+        font-size: var(--text-12);
+        line-height: var(--lh-14);
+        font-weight: var(--fw-400);
+        color: var(--gray-1000);
+    }
+
+    .schedule-item__time-period {
+        margin-top: 10px;
+        font-size: var(--text-11);
+        line-height: var(--lh-14);
+        font-weight: var(--fw-400);
+        color: var(--gray-700);
+        min-width: 60px;
+        &--videocall {
+            color: var(--blue-600);
+        }
+        &--office {
+            color: var(--red-300);
+        }
+        &--phonecall {
+            color: var(--emerald-300);
+        }
+        &--test {
+            color: var(--purple-800);
+        }
+        &--offer {
+            color: var(--green-1000);
+        }
+        &--work {
+            color: var(--orange-700);
+        }
+    }
+}

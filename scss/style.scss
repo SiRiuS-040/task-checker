@@ -1,0 +1,44 @@
+// глобальные
+@import "./global/_variables.scss";
+@import "./global/_global.scss";
+
+// заглушки
+@import "./blocks/_fake-header.scss";
+@import "./blocks/_fake-footer.scss";
+@import "./blocks/_employer-profile.scss";
+
+// стили
+// страница
+@import "./blocks/_content.scss";
+@import "./blocks/_content-header.scss";
+@import "./blocks/_navigation.scss";
+
+// контент
+@import "./blocks/_calendar.scss";
+@import "./blocks/_calendar-options.scss";
+
+@import "./blocks/_week-calendar.scss";
+@import "./blocks/_day-calendar.scss";
+
+@import "./blocks/_calendar-mini.scss";
+
+@import "./blocks/_side-section.scss";
+@import "./blocks/_side-schedule.scss";
+@import "./blocks/_side-filter.scss";
+
+// раздел все события
+
+@import "./blocks/_section-all-tasks.scss";
+
+// @import "./blocks/_cell-schedule.scss";
+
+// @import "./blocks/_flatpickr.scss";
+
+// попапы
+@import "./blocks/_popup-template.scss";
+@import "./blocks/_new-schedule.scss";
+@import "./blocks/_task-selector.scss";
+@import "./blocks/_task-options.scss";
+
+// @import "./blocks/_test.scss";
+@import "./blocks/_schedule-legend-columns.scss";

@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../common/variables.css">
+    <link rel="stylesheet" href="../../common/components.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+</head>
+
+<body class="body">
+    <h1 class="visually-hidden">Мои заказы</h1>
+
+    <header class="fake-header">
+        <div class="fake-header__wrapper"></div>
+    </header>
+
+    <section class="employer-profile">
+        <button class="employer-profile__button-hide"></button>
+        <div class="employer-profile__wrapper"></div>
+    </section>
+
+    <main class="calendar-content">
+
+        <section class="content-header">
+            <div class="content-header__title-box">
+                <a href="#" aria-label="Предыдущее меню" class="content-header__link-back" onclick="history.back();">
+                    <img src="./img/icons/icon-arrow-back.svg" alt="стрелка назад" class="hero__privious-page-icon">
+                </a>
+                <h2 class="content-header__title">Календарь</h2>
+            </div>
+            <div class="navigation container">
+                <div class="navigation__list">
+                    <button id="section-calendar" class="navigation__nav-button navigation__nav-button--active">
+                        Работодателя
+                    </button>
+                    <span class="navigation__nav-slider"></span>
+                    <button id="all-tasks-section" class="navigation__nav-button">
+                        Все события
+                    </button>
+                </div>
+            </div>
+
+
+
+            <div class="content-header__button-wrapper">
+                <button class="content-header__button content-header__button--full-screen"></button>
+            </div>
+        </section>
+
+        <section class="section__catalog section-calendar">
+            <section class="calendar">
+                <div class="calendar__main-wrapper">
+                    <div class="calendar__overlay"></div>
+                    <div class="calendar__main-nav-wrapper">
+                        <div class="calendar__control-wrapper">
+                            <button class="calendar__control-button calendar__control-button--prev"></button>
+                            <button class="calendar__control calendar__control--set-current-date">Сегодня</button>
+                            <button class="calendar__control-button calendar__control-button--next"></button>
+                        </div>
+                        <div class="title-wrapper">
+                            <p class="calendar__title-desc calendar-title active">
+                                <input type="hidden" class="calendar-title__data" readonly="readonly">
+                                <span class="calendar-title__current-month"></span>
+                                <span class="calendar-title__current-year"></span>
+                            </p>
+                            <p class="calendar__title-desc calendar-day-title">
+                                <span class="calendar-day-title__item-date"></span>
+                                <span class="calendar-day-title__item-month"></span>
+                                <span class="calendar-day-title__item-year"></span>
+                                <!-- <span class="day-legend__item-day">понедельник </span> -->
+                            </p>
+                        </div>
+                        <div class="calendar__main-options-wrapper">
+                            <div class="calendar__grid-control-wrapper grid-control">
+                                <button class="grid-control__button-show-options">Месяц</button>
+                                <ul class="grid-control__list">
+                                    <li class="grid-control__item">
+                                        <button class="grid-control__button grid-control__button--day"
+                                            id="day-calendar">День</button>
+                                    </li>
+                                    <li class="grid-control__item">
+                                        <button class="grid-control__button grid-control__button--week"
+                                            id="week-calendar">Неделя</button>
+                                    </li>
+                                    <li class="grid-control__item">
+                                        <button class="grid-control__button grid-control__button--month active"
+                                            id="main-calendar">Месяц</button>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="calendar__options-wrapper calendar-options">
+                                <button
+                                    class="calendar-options__button calendar-options__button--show-options"></button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="calendar__side-section side-section">
+                    <input type="hidden" class="calendar__menu-input-calendar" readonly="readonly">
+                    <button class="calendar__control calendar__control--show-side-menu"></button>
+                    <div class="calendar__mini-calendar-wrapper mini-calendar">
+                        <div class="mini-calendar__title-wrapper">
+                            <input type="hidden" class="mini-calendar__title-data" readonly="readonly">
+                            <p class="mini-calendar__title-desc mini-calendar-title">
+                                <span class="mini-calendar-title__current-month"></span>
+                                <span class="mini-calendar-title__current-year"></span>
+                            </p>
+                            <div class="mini-calendar__control-wrapper">
+                                <button
+                                    class="mini-calendar__control-button mini-calendar__control-button--prev"></button>
+                                <button
+                                    class="mini-calendar__control-button mini-calendar__control-button--next"></button>
+                            </div>
+                        </div>
+                        <div class="mini-calendar__grid-wrapper">
+                            <ul class="mini-calendar__weekdays-list weekdays">
+                                <li class="weekdays__item" id="1"><span class="weekdays__item-legnd">Пн</span></li>
+                                <li class="weekdays__item" id="2"><span class="weekdays__item-legnd">Вт</span></li>
+                                <li class="weekdays__item" id="3"><span class="weekdays__item-legnd">Ср</span></li>
+                                <li class="weekdays__item" id="4"><span class="weekdays__item-legnd">Чт</span></li>
+                                <li class="weekdays__item" id="5"><span class="weekdays__item-legnd">Пт</span></li>
+                                <li class="weekdays__item" id="6"><span class="weekdays__item-legnd">Сб</span></li>
+                                <li class="weekdays__item" id="0"><span class="weekdays__item-legnd">Вс</span></li>
+                            </ul>
+                            <ul class="mini-calendar__month-grid month-grid ">
+                                <li class="month-grid__day-cell" id="0">
+                                    <input type="text" disabled class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="1"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="2"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="3"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="4"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="5"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="6"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="0"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="1"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="2"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="3"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="4"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="5"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="6"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="0"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="1"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="2"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="3"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="4"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="5"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="6"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="0"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="1"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="2"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="3"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="4"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="5"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="6"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="0"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="1"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="2"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="3"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="4"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="5"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="6"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="0"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="1"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="2"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="3"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="4"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="5"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                                <li class="month-grid__day-cell" id="6"> <input type="text" disabled
+                                        class="month-grid__cell-date-data">
+                                    <p class="month-grid__cell-day-number"></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="side-section__task-filter task-filter minimized ">
+                        <div class="task-filter__list">
+                            <label class="task-filter__label-checkbox-special">
+                                <input type="checkbox"
+                                    class="task-filter__input-checkbox-special task-filter__input-checkbox-special--all-tasks"
+                                    checked>
+                                <span class="task-filter__checkbox-icon"></span>
+                                <span class="task-filter__label  task-filter__label--all-tasks"><span
+                                        class="task-filter__label-desc">Выбрать
+                                        все события</span></span>
+                            </label>
+                            <label class="task-filter__label-checkbox">
+                                <input type="checkbox" class="task-filter__input-checkbox" checked value="videocall">
+                                <span class="task-filter__checkbox-icon"></span>
+                                <span class="task-filter__label task-filter__label--videocall"><span
+                                        class="task-filter__label-desc">Видеособеседование</span></span>
+                            </label>
+                            <label class="task-filter__label-checkbox">
+                                <input type="checkbox" class="task-filter__input-checkbox" checked value="office">
+                                <span class="task-filter__checkbox-icon"></span>
+                                <span class="task-filter__label task-filter__label--office"><span
+                                        class="task-filter__label-desc">Интервью в офисе</span></span>
+                            </label>
+                            <label class="task-filter__label-checkbox">
+                                <input type="checkbox" class="task-filter__input-checkbox" checked value="phonecall">
+                                <span class="task-filter__checkbox-icon"></span>
+                                <span class="task-filter__label task-filter__label--phonecall"><span
+                                        class="task-filter__label-desc">Аудиозвонок</span></span>
+                            </label>
+                            <label class="task-filter__label-checkbox">
+                                <input type="checkbox" class="task-filter__input-checkbox" checked value="test">
+                                <span class="task-filter__checkbox-icon"></span>
+                                <span class="task-filter__label task-filter__label--test"><span
+                                        class="task-filter__label-desc">Тестовое задание</span></span>
+                            </label>
+                            <label class="task-filter__label-checkbox">
+                                <input type="checkbox" class="task-filter__input-checkbox" checked value="offer">
+                                <span class="task-filter__checkbox-icon"></span>
+                                <span class="task-filter__label task-filter__label--offer"><span
+                                        class="task-filter__label-desc">Предложение о работе</span></span>
+                            </label>
+                            <label class="task-filter__label-checkbox">
+                                <input type="checkbox" class="task-filter__input-checkbox" checked value="work">
+                                <span class="task-filter__checkbox-icon"></span>
+                                <span class="task-filter__label task-filter__label--work"><span
+                                        class="task-filter__label-desc">Выход на работу</span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <button class="basic-button content-header__button content-header__button--add-new-task">+ Новое
+                        событие
+                    </button>
+                    <p class="side-section__selected-date-desc">
+                        <span class="side-section__selected-date-data">2</span>
+                        <span class="side-section__selected-month-data">ноября</span>,
+                        <span class="side-section__selected-day-data">вторник</span>
+                    </p>
+                    <div class="side-section__schedule side-schedule"></div>
+                    <div class="calendar-options__wrapper">
+                        <button class="calendar-options__button-close"></button>
+                        <p class="calendar-options__title"> Настройки календаря </p>
+                        <ul class="calendar-options__list active">
+                            <li class="calendar-options__item">
+                                <button
+                                    class="calendar-options__control calendar-options__control--hide-weekdays">Скрыть
+                                    СБ,ВС</button>
+                            </li>
+                            <li class="calendar-options__item">
+                                <button
+                                    class="calendar-options__control calendar-options__control--special-dates">Показать
+                                    ПК</button>
+                            </li>
+                            <li class="calendar-options__item working-time">
+                                <h4 class="working-time__title">Начало рабочего дня</h4>
+                                <p class="working-time__hour-data working-time__hour-data--start">00:00</p>
+                                <div class="working-time__hour-list working-time__hour-list--start">
+                                    <label class="working-time__item" data-value="00:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour" checked>
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">00:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="01:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">01:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="02:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">02:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="03:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">03:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="04:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">04:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="05:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">05:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="06:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">06:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="07:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">07:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="08:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">08:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="09:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">09:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="10:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">10:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="11:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">11:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="12:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">12:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="13:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">13:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="14:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">14:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="15:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">15:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="16:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">16:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="17:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">17:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="18:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">18:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="19:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">19:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="20:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">20:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="21:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">21:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="22:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">22:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="23:00">
+                                        <input class="working-time__radio-input" type="radio" name="start-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">23:00</p>
+                                    </label>
+                                </div>
+                            </li>
+                            <li class="calendar-options__item working-time">
+                                <h4 class="working-time__title">Конец рабочего дня</h4>
+                                <p class="working-time__hour-data working-time__hour-data--end">23:00</p>
+                                <div class="working-time__hour-list working-time__hour-list--end">
+                                    <label class="working-time__item" data-value="00:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">00:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="01:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">01:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="02:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">02:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="03:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">03:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="04:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">04:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="05:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">05:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="06:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">06:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="07:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">07:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="08:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">08:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="09:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">09:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="10:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">10:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="11:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">11:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="12:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">12:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="13:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">13:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="14:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">14:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="15:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">15:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="16:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">16:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="17:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">17:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="18:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">18:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="19:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">19:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="20:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">20:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="21:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">21:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="22:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour">
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">22:00</p>
+                                    </label>
+                                    <label class="working-time__item" data-value="23:00">
+                                        <input class="working-time__radio-input" type="radio" name="end-hour" checked>
+                                        <span class="working-time__radio-icon"></span>
+                                        <p class="working-time__data">23:00</p>
+                                    </label>
+                                </div>
+
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </section>
+        <section class="section__employer all-tasks-section container disabled">
+            <h2 class="all-tasks-section__title">Все события раздела</h2>
+            <h3>Списки задач</h3>
+        </section>
+    </main>
+    <footer class="fake-footer">
+    </footer>
+
+    <div class="popup-wrapper">
+        <div class="overlay overlay --active"> </div>
+        <div class="popup-template new-schedule-popup new-schedule--employer">
+            <button class="popup-template__modal-close new-schedule__modal-close"></button>
+            <button class="popup-template__swipe-close new-schedule__swipe-close"></button>
+            <div class="popup-template__inner new-schedule__inner">
+                <div class="new-schedule__form-wrapper">
+                    <h2 class="popup-template__main-title new-schedule__main-title">Создание нового события</h2>
+
+                    <label class="popup-template__desc new-schedule__desc">ID:
+                        <input type="text" class="new-schedule__input new-schedule__input--task-id" placeholder="10072"
+                            required>
+                    </label>
+                    <label class="popup-template__desc new-schedule__desc">Название:
+                        <input type="text" class="new-schedule__input new-schedule__input--title"
+                            placeholder="Введите название" required>
+                    </label>
+
+                    <div class="new-schedule__selector-wrapper">
+                        <p class="new-schedule__select-data new-schedule__select-data--type-data" taskType="videocall">
+                            Видеособеседование</p>
+                        <div class="new-schedule__select-list new-schedule__select-list--type-select">
+                            <label class="new-schedule__type-option">
+                                <input class="new-schedule__type-radio-input" type="radio"
+                                    name="new-schedule__type-option" checked taskType="videocall">
+                                <span class="new-schedule__radio-icon"></span>
+                                <p class="new-schedule__type-data">Видеособеседование</p>
+                            </label>
+                            <label class="new-schedule__type-option">
+                                <input class="new-schedule__type-radio-input" type="radio"
+                                    name="new-schedule__type-option" taskType="office">
+                                <span class="new-schedule__radio-icon"></span>
+                                <p class="new-schedule__type-data">Интервью в офисе</p>
+                            </label>
+                            <label class="new-schedule__type-option">
+                                <input class="new-schedule__type-radio-input" type="radio"
+                                    name="new-schedule__type-option" taskType="phonecall">
+                                <span class="new-schedule__radio-icon"></span>
+                                <p class="new-schedule__type-data">Аудиозвонок</p>
+                            </label>
+                            <label class="new-schedule__type-option">
+                                <input class="new-schedule__type-radio-input" type="radio"
+                                    name="new-schedule__type-option" taskType="test">
+                                <span class="new-schedule__radio-icon"></span>
+                                <p class="new-schedule__type-data">Тест/анкета</p>
+                            </label>
+                            <label class="new-schedule__type-option">
+                                <input class="new-schedule__type-radio-input" type="radio"
+                                    name="new-schedule__type-option" taskType="offer">
+                                <span class="new-schedule__radio-icon"></span>
+                                <p class="new-schedule__type-data">Оффер</p>
+                            </label>
+                            <label class="new-schedule__type-option">
+                                <input class="new-schedule__type-radio-input" type="radio"
+                                    name="new-schedule__type-option" taskType="work">
+                                <span class="new-schedule__radio-icon"></span>
+                                <p class="new-schedule__type-data">Выход на работу</p>
+                            </label>
+                        </div>
+                    </div>
+                    <label class="popup-template__desc new-schedule__desc">Выберите дату:
+                        <input type="date" class="new-schedule__input new-schedule__input--date" required>
+                    </label>
+                    <label class="popup-template__desc new-schedule__desc">Начало события:
+                        <input class="new-schedule__input new-schedule__input--start-time" placeholder="10:00"
+                            maxlength="5" required>
+                    </label>
+                    <label class="popup-template__desc new-schedule__desc">Завершение события:
+                        <input class="new-schedule__input new-schedule__input--end-time" placeholder="11:00"
+                            maxlength="5" required>
+                    </label>
+                </div>
+            </div>
+            <div class="popup-template__controls new-schedule__controls">
+                <button
+                    class="basic-button popup-template__button popup-template__button-cancel new-schedule__button-cancel"
+                    aria-label="Отменить оплату">Отмена</button>
+                <button
+                    class="basic-button popup-template__button popup-template__button-create new-schedule__button-create"
+                    aria-label="Создать">Создать</button>
+            </div>
+        </div>
+
+        <div class="popup-template task-selector task-selector--employer">
+            <button class="popup-template__modal-close task-selector__modal-close"></button>
+            <button class="popup-template__swipe-close task-selector__swipe-close"></button>
+            <div class="popup-template__inner task-selector__inner">
+                <div class="task-selector__wrapper">
+                    <h2 class="popup-template__main-title task-selector__main-title">Запланировано:</h2>
+                    <ul class="task-selector__task-list">
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="popup-template task-options task-options--employer">
+            <button class="task-options__button-gaback">Вернуться к списку</button>
+            <button class="popup-template__modal-close task-options__modal-close"></button>
+            <button class="popup-template__swipe-close task-options__swipe-close"></button>
+            <div class="popup-template__inner task-options__inner">
+                <p class="task-options__type-title">Видеособеседование</p>
+                <p class="task-options__time-period">2 ноября с 09:00—10:00 </p>
+                <p class="task-options__vacancy-title">Продавец кассир</p>
+                <p class="task-options__company-name">ООО Импорт Хоум</p>
+                <p class="task-options__resume-title">Продавец</p>
+                <p class="task-options__resume-name">Игорь Федоров</p>
+            </div>
+            <div class="popup-template__controls task-options__controls">
+                <button
+                    class="popup-template__button popup-template__button-change task-options__button task-options__button--change"
+                    aria-label="Отменить оплату">
+                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M4.13153 10.8583L2.30035 12.2699C2.14775 12.4034 2.09053 12.6323 2.20498 12.804L3.92171 15.7605C4.03615 15.9513 4.26505 16.0276 4.4558 15.9513L6.59217 15.0929C7.01182 15.4363 7.50776 15.7033 8.02278 15.9322L8.34705 18.183C8.36613 18.3929 8.55688 18.5455 8.7667 18.5455H12.1811C12.3909 18.5455 12.5626 18.3929 12.6007 18.183L12.925 15.9322C13.4591 15.7224 13.936 15.4363 14.3747 15.0929L16.492 15.9513C16.7018 16.0085 16.9307 15.9513 17.0261 15.7605L18.7428 12.804C18.8573 12.6132 18.8 12.3843 18.6474 12.2508L16.8353 10.8393C16.914 10.2825 16.914 9.71744 16.8353 9.16068L18.6474 7.74914C18.8191 7.61561 18.8382 7.38672 18.7428 7.19597L17.0261 4.23938C16.974 4.14952 16.8918 4.08103 16.794 4.04611C16.6962 4.01118 16.5892 4.01207 16.492 4.04863L14.3747 4.907C13.936 4.56365 13.44 4.29661 12.925 4.06771L12.6007 1.81689C12.5817 1.60706 12.3909 1.45447 12.1811 1.45447H8.7667C8.6645 1.45703 8.5669 1.49749 8.49287 1.568C8.41884 1.6385 8.37367 1.73401 8.36613 1.83596L8.04186 4.08679C7.50776 4.29661 7.03089 4.58273 6.59217 4.92607L4.47487 4.06771C4.26505 4.01049 4.03616 4.06771 3.94078 4.25846L2.22405 7.21505C2.1096 7.40579 2.16683 7.63469 2.31943 7.76821L4.13153 9.17975C4.0743 9.44679 4.05523 9.73291 4.05523 10.019C4.05523 10.3052 4.09338 10.5913 4.13153 10.8583Z"
+                            fill="#606483" />
+                        <path
+                            d="M2.30035 12.2699L2.03695 11.9688L2.0463 11.9606L2.05615 11.9531L2.30035 12.2699ZM4.13153 10.8583L4.52751 10.8018L4.5605 11.0327L4.37573 11.1751L4.13153 10.8583ZM4.13153 9.17975L4.37733 8.86418L4.5752 9.01831L4.52265 9.26356L4.13153 9.17975ZM2.31943 7.76821L2.07362 8.08378L2.06461 8.07676L2.05602 8.06924L2.31943 7.76821ZM2.22405 7.21505L2.57 7.41592L2.56705 7.42084L2.22405 7.21505ZM3.94078 4.25846L4.29855 4.43734L4.29297 4.44851L4.2867 4.45931L3.94078 4.25846ZM4.47487 4.06771L4.58012 3.6818L4.60309 3.68807L4.62515 3.69701L4.47487 4.06771ZM6.59217 4.92607L6.83869 5.24108L6.65641 5.38374L6.44189 5.29677L6.59217 4.92607ZM8.04186 4.08679L8.43777 4.14382L8.4046 4.37404L8.18812 4.45909L8.04186 4.08679ZM8.36613 1.83596L8.76504 1.86547L8.76402 1.87929L8.76204 1.893L8.36613 1.83596ZM8.49287 1.568L8.76874 1.85765L8.76873 1.85765L8.49287 1.568ZM8.7667 1.45447L8.75667 1.05447H8.7667V1.45447ZM12.6007 1.81689L12.2048 1.87393L12.2033 1.86355L12.2024 1.8531L12.6007 1.81689ZM12.925 4.06771L12.7625 4.43323L12.5606 4.34348L12.5291 4.12475L12.925 4.06771ZM14.3747 4.907L14.525 5.2777L14.3104 5.36466L14.1282 5.222L14.3747 4.907ZM16.492 4.04863L16.3416 3.67782L16.3512 3.67424L16.492 4.04863ZM16.794 4.04611L16.9285 3.66941L16.9285 3.66941L16.794 4.04611ZM17.0261 4.23938L16.6802 4.44024L16.6799 4.43986L17.0261 4.23938ZM18.7428 7.19597L19.0887 6.99512L19.095 7.00592L19.1006 7.01709L18.7428 7.19597ZM18.6474 7.74914L18.4016 7.43358L18.4019 7.4334L18.6474 7.74914ZM16.8353 9.16068L16.4393 9.21664L16.4069 8.98739L16.5895 8.84511L16.8353 9.16068ZM16.8353 10.8393L16.5895 11.1548L16.4069 11.0125L16.4393 10.7833L16.8353 10.8393ZM18.6474 12.2508L18.8932 11.9352L18.9022 11.9422L18.9108 11.9498L18.6474 12.2508ZM18.7428 12.804L18.3969 12.6031L18.3998 12.5982L18.7428 12.804ZM17.0261 15.7605L16.6683 15.5817L16.6739 15.5705L16.6802 15.5597L17.0261 15.7605ZM16.492 15.9513L16.3867 16.3372L16.3638 16.3309L16.3417 16.322L16.492 15.9513ZM14.3747 15.0929L14.1282 14.7779L14.3104 14.6353L14.525 14.7222L14.3747 15.0929ZM12.925 15.9322L12.5291 15.8752L12.5623 15.645L12.7787 15.5599L12.925 15.9322ZM12.6007 18.183L12.9966 18.2401L12.9956 18.2474L12.9943 18.2546L12.6007 18.183ZM8.34705 18.183L8.74296 18.126L8.74446 18.1364L8.74541 18.1468L8.34705 18.183ZM8.02278 15.9322L8.18524 15.5667L8.38718 15.6564L8.41869 15.8752L8.02278 15.9322ZM6.59217 15.0929L6.44304 14.7218L6.66246 14.6336L6.84547 14.7833L6.59217 15.0929ZM4.4558 15.9513L4.60493 16.3225L4.60435 16.3227L4.4558 15.9513ZM3.92171 15.7605L3.57867 15.9664L3.57579 15.9614L3.92171 15.7605ZM2.20498 12.804L2.5378 12.5821L2.54467 12.5924L2.55089 12.6031L2.20498 12.804ZM2.05615 11.9531L3.88733 10.5415L4.37573 11.1751L2.54456 12.5867L2.05615 11.9531ZM3.73555 10.9149C3.69751 10.6486 3.65523 10.3369 3.65523 10.019H4.45523C4.45523 10.2735 4.48925 10.5339 4.52751 10.8018L3.73555 10.9149ZM3.65523 10.019C3.65523 9.71712 3.67515 9.40045 3.74041 9.09593L4.52265 9.26356C4.47345 9.49314 4.45523 9.74871 4.45523 10.019H3.65523ZM3.88572 9.49531L2.07362 8.08378L2.56523 7.45265L4.37733 8.86418L3.88572 9.49531ZM2.05602 8.06924C1.77752 7.82555 1.65412 7.38747 1.88106 7.00925L2.56705 7.42084C2.5645 7.42509 2.56401 7.42748 2.56383 7.42856C2.5636 7.42996 2.56342 7.43252 2.56419 7.43648C2.56598 7.44567 2.57212 7.45782 2.58283 7.46718L2.05602 8.06924ZM1.87814 7.01419L3.59487 4.0576L4.2867 4.45931L2.56997 7.4159L1.87814 7.01419ZM3.58301 4.07957C3.79423 3.65713 4.26146 3.5949 4.58012 3.6818L4.36963 4.45362C4.35097 4.44853 4.33347 4.44646 4.31859 4.44654C4.30363 4.44663 4.29364 4.44885 4.28854 4.45051C4.28371 4.45208 4.28473 4.45261 4.28865 4.44939C4.29315 4.4457 4.29678 4.44089 4.29855 4.43734L3.58301 4.07957ZM4.62515 3.69701L6.74245 4.55538L6.44189 5.29677L4.32459 4.43841L4.62515 3.69701ZM6.34565 4.61107C6.81068 4.24713 7.32088 3.94027 7.89559 3.71448L8.18812 4.45909C7.69465 4.65295 7.2511 4.91832 6.83869 5.24108L6.34565 4.61107ZM7.96722 1.80646C7.98208 1.60552 8.07111 1.41729 8.21701 1.27834L8.76873 1.85765C8.76657 1.85971 8.76526 1.8625 8.76504 1.86547L7.96722 1.80646ZM8.21701 1.27834C8.36291 1.13939 8.55526 1.05964 8.75668 1.05459L8.77672 1.85434C8.77374 1.85442 8.7709 1.8556 8.76874 1.85765L8.21701 1.27834ZM8.7667 1.05447H12.1811V1.85447H8.7667V1.05447ZM12.1811 1.05447C12.5689 1.05447 12.9588 1.33723 12.9991 1.78067L12.2024 1.8531C12.2027 1.85688 12.204 1.86055 12.2053 1.86295C12.2064 1.86495 12.2066 1.8645 12.2045 1.86271C12.2023 1.86087 12.1988 1.85861 12.1941 1.85689C12.1895 1.85521 12.1851 1.85447 12.1811 1.85447V1.05447ZM13.0875 3.70219C13.6195 3.93864 14.1474 4.22122 14.6212 4.592L14.1282 5.222C13.7245 4.90609 13.2606 4.65458 12.7625 4.43323L13.0875 3.70219ZM14.2244 4.5363L16.3417 3.67794L16.6423 4.41933L14.525 5.2777L14.2244 4.5363ZM16.3512 3.67424C16.537 3.60435 16.7416 3.60264 16.9285 3.66941L16.6595 4.4228C16.6508 4.41972 16.6414 4.4198 16.6328 4.42303L16.3512 3.67424ZM16.9285 3.66941C17.1155 3.73618 17.2727 3.86711 17.3722 4.0389L16.6799 4.43986C16.6753 4.43193 16.6681 4.42589 16.6595 4.4228L16.9285 3.66941ZM17.372 4.03853L19.0887 6.99512L18.3969 7.39683L16.6802 4.44024L17.372 4.03853ZM19.1006 7.01709C19.2561 7.3282 19.2555 7.78297 18.893 8.06488L18.4019 7.4334C18.4031 7.4324 18.4016 7.43342 18.4 7.4363C18.3986 7.43879 18.399 7.43929 18.3995 7.43609C18.4006 7.4282 18.4004 7.40552 18.385 7.37486L19.1006 7.01709ZM18.8932 8.0647L17.0811 9.47624L16.5895 8.84511L18.4016 7.43358L18.8932 8.0647ZM17.2314 9.10471C17.3153 9.6986 17.3153 10.3013 17.2314 10.8952L16.4393 10.7833C16.5127 10.2637 16.5127 9.73627 16.4393 9.21664L17.2314 9.10471ZM17.0811 10.5237L18.8932 11.9352L18.4016 12.5663L16.5895 11.1548L17.0811 10.5237ZM18.9108 11.9498C19.1893 12.1934 19.3127 12.6315 19.0858 13.0098L18.3998 12.5982C18.4024 12.5939 18.4028 12.5915 18.403 12.5904C18.4033 12.589 18.4034 12.5865 18.4027 12.5825C18.4009 12.5733 18.3947 12.5612 18.384 12.5518L18.9108 11.9498ZM19.0887 13.0048L17.372 15.9614L16.6802 15.5597L18.3969 12.6031L19.0887 13.0048ZM17.3838 15.9394C17.1726 16.3619 16.7054 16.4241 16.3867 16.3372L16.5972 15.5654C16.6159 15.5705 16.6334 15.5725 16.6483 15.5725C16.6632 15.5724 16.6732 15.5701 16.6783 15.5685C16.6831 15.5669 16.6821 15.5664 16.6782 15.5696C16.6737 15.5733 16.6701 15.5781 16.6683 15.5817L17.3838 15.9394ZM16.3417 16.322L14.2244 15.4636L14.525 14.7222L16.6423 15.5806L16.3417 16.322ZM14.6212 15.4079C14.1562 15.7719 13.646 16.0787 13.0713 16.3045L12.7787 15.5599C13.2722 15.3661 13.7157 15.1007 14.1282 14.7779L14.6212 15.4079ZM13.3209 15.9893L12.9966 18.2401L12.2048 18.126L12.5291 15.8752L13.3209 15.9893ZM12.9943 18.2546C12.9242 18.64 12.5987 18.9455 12.1811 18.9455V18.1455C12.1846 18.1455 12.1865 18.1449 12.1875 18.1445C12.1887 18.1441 12.1904 18.1432 12.1926 18.1413C12.1967 18.1377 12.204 18.1288 12.2072 18.1115L12.9943 18.2546ZM12.1811 18.9455H8.7667V18.1455H12.1811V18.9455ZM8.7667 18.9455C8.37892 18.9455 7.98901 18.6627 7.9487 18.2193L8.74541 18.1468C8.74507 18.143 8.74381 18.1394 8.7425 18.137C8.74141 18.135 8.74117 18.1354 8.74329 18.1372C8.74547 18.139 8.74901 18.1413 8.75368 18.143C8.75824 18.1447 8.76271 18.1455 8.7667 18.1455V18.9455ZM7.95114 18.2401L7.62687 15.9893L8.41869 15.8752L8.74296 18.126L7.95114 18.2401ZM7.86032 16.2977C7.32948 16.0618 6.79749 15.7777 6.33888 15.4025L6.84547 14.7833C7.22614 15.0948 7.68604 15.3448 8.18524 15.5667L7.86032 16.2977ZM6.7413 15.4641L4.60493 16.3225L4.30667 15.5801L6.44304 14.7218L6.7413 15.4641ZM4.60435 16.3227C4.22373 16.4749 3.7899 16.3183 3.57871 15.9663L4.2647 15.5547C4.27286 15.5683 4.28325 15.5754 4.29228 15.5785C4.30187 15.5819 4.30684 15.5801 4.30724 15.5799L4.60435 16.3227ZM3.57579 15.9614L1.85906 13.0048L2.55089 12.6031L4.26762 15.5597L3.57579 15.9614ZM1.87216 13.0258C1.62159 12.65 1.76948 12.2029 2.03695 11.9688L2.56376 12.5709C2.55873 12.5753 2.55409 12.5809 2.55049 12.587C2.54686 12.5933 2.5453 12.5983 2.54475 12.601C2.54424 12.6036 2.54494 12.6024 2.54415 12.5979C2.54326 12.5928 2.54102 12.5869 2.5378 12.5821L1.87216 13.0258ZM7.64594 4.02975L7.97022 1.77892L8.76204 1.893L8.43777 4.14382L7.64594 4.02975ZM12.9966 1.75985L13.3209 4.01067L12.5291 4.12475L12.2048 1.87393L12.9966 1.75985Z"
+                            fill="#606483" />
+                        <circle r="1.87821" transform="matrix(-1 0 0 1 10.4743 10)" stroke="white" stroke-width="3" />
+                    </svg>
+                    Изменить</button>
+                <button
+                    class="popup-template__button popup-template__button-remind task-options__button task-options__button--remind"
+                    aria-label="Создать">
+                    <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M10.4914 18.3333C11.408 18.3333 12.158 17.5833 12.158 16.6667H8.82471C8.82471 17.5833 9.56637 18.3333 10.4914 18.3333ZM15.4914 13.3333V9.16668C15.4914 6.60834 14.1247 4.46668 11.7414 3.90001V3.33334C11.7414 2.64168 11.183 2.08334 10.4914 2.08334C9.79971 2.08334 9.24137 2.64168 9.24137 3.33334V3.90001C6.84971 4.46668 5.49137 6.60001 5.49137 9.16668V13.3333L3.82471 15V15.8333H17.158V15L15.4914 13.3333Z"
+                            fill="#606483" />
+                    </svg>
+                    Напомнить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script type="module" src="js/script.js"></script>
+    <!-- <script src="js/swiped-events.min.js"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <!-- календарь -->
+    <script src="https://npmcdn.com/flatpickr/dist/l10n/ru.js"></script>
+    <!-- русский язык для календаря -->
+</body>
+
+
+</html>

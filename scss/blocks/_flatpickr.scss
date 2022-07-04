@@ -1,0 +1,46 @@
+.flatpickr-calendar {
+}
+
+.flatpickr-day {
+    color: var(--gray-900) !important;
+    margin-bottom: 30px !important;
+
+    &.selected {
+        border-color: transparent !important; //рамка выбранного дня
+        border-color: var(--orange-600) !important; //рамка выбранного дня
+        background-color: transparent !important; //фон выбранного дня
+        background-color: var(--orange-600) !important; //фон выбранного дня
+
+        position: relative !important;
+    }
+
+    &.today {
+        // border-color: var(--orange-600) !important; //рамка тек дня
+    }
+
+    &.nextMonthDay {
+        color: var(--gray-700) !important;
+    }
+    &.prevMonthDay {
+        color: var(--gray-700) !important;
+    }
+
+    &::before {
+        position: absolute !important;
+        content: "" !important;
+        width: 100% !important;
+        height: 30px !important;
+        left: 0;
+        bottom: -30px;
+        // left: 5px;
+        // margin: 0 auto;
+        border: 1px solid red !important; //рамка выбранного дня
+        // background-color: red !important; //фон выбранного дня
+        // border-radius: 50px;
+        background-size: auto;
+        z-index: -1;
+    }
+}
+
+.flatpickr-day {
+}

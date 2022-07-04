@@ -1,0 +1,118 @@
+.test-wrapper {
+    display: grid;
+    grid-template-columns: 200px 500px;
+    border: 1px solid red;
+}
+
+.test-schelude-legend-list {
+    display: grid;
+
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: 200px;
+
+    height: 200px;
+    overflow: hidden;
+}
+
+.test-legend-item {
+    height: 200px;
+    width: 50px;
+}
+
+.test-schelude-list {
+    display: grid;
+
+    grid-template-columns: 1fr;
+    grid-template-rows: 200px;
+
+    height: 200px;
+    overflow: hidden;
+}
+
+.test-schelude-item {
+    height: 200px;
+}
+
+.color {
+    &--red {
+        background-color: red;
+    }
+
+    &--blue {
+        background-color: blue;
+    }
+
+    &--green {
+        background-color: green;
+    }
+
+    &--black {
+        background-color: black;
+    }
+}
+
+.column--1 {
+    grid-column-start: 1;
+    grid-column-end: 2;
+
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.column--2 {
+    grid-column-start: 2;
+    grid-column-end: 3;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.column--3 {
+    grid-column-start: 3;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.column--4 {
+    grid-column-start: 4;
+    grid-column-end: 5;
+    grid-row-start: 1;
+    grid-row-end: 2;
+}
+
+.test__input {
+    display: block;
+    border: 1px solid red;
+    background-color: lightgray;
+    margin-top: 10px;
+    font-size: var(--text-20);
+    line-height: var(--lh-24);
+    font-weight: var(--fw-500);
+    &--from {
+    }
+    &--to {
+    }
+}
+
+.button__wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.test-button {
+    margin-top: 8px;
+    width: 300px;
+}
+
+.button-check {
+    margin-top: 10px;
+}
+
+.test__result {
+    margin-top: 10px;
+    color: red;
+}
+
+.test__result-data {
+    color: red;
+}

@@ -1,0 +1,141 @@
+.task-options {
+    transition: $transition-basic;
+    transition: all 0s;
+    box-shadow: 1px 4px 40px rgba(54, 94, 125, 0.31);
+    border-radius: 10px;
+
+    &.active {
+        transition: $transition-basic;
+        transition: all 0s;
+    }
+
+    &.task-selector-active {
+        .task-options__button-gaback {
+            display: block;
+            margin-left: 22px;
+            padding: 2px 0;
+            background-color: var(--white);
+            font-size: var(--text-12);
+            line-height: var(--lh-14);
+            font-weight: var(--fw-400);
+            color: var(--gray-900);
+            position: relative;
+            &::before {
+                position: absolute;
+                content: "";
+                top: 0;
+                left: -22px;
+                width: 18px;
+                height: 18px;
+                background-image: url(../img/icons/icon-task-options-goback.svg);
+            }
+        }
+
+        .task-options__type-title {
+            margin-top: 24px;
+        }
+    }
+
+    @media (min-width: $tablet-width) {
+        width: 340px;
+        padding: 24px 16px;
+    }
+}
+
+.task-options__button-gaback {
+    display: none;
+}
+
+.task-options__modal-close {
+    right: 16px;
+    top: 24px;
+}
+
+.task-options__type-title {
+    font-size: var(--text-22);
+    line-height: var(--lh-28);
+    font-weight: var(--fw-500);
+    color: var(--gray-900);
+    margin-right: 24px;
+}
+
+.task-options__time-period {
+    margin-top: 4px;
+    font-size: var(--text-14);
+    line-height: var(--lh-20);
+    font-weight: var(--fw-400);
+    color: var(--gray-900);
+}
+
+.task-options__vacancy-title {
+    margin-top: 20px;
+    padding-left: 24px;
+    font-size: var(--text-14);
+    line-height: var(--lh-20);
+    font-weight: var(--fw-500);
+    color: var(--gray-900);
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: calc(50% - 8px);
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(../img/icons/icon-task-options-employer.svg);
+    }
+}
+
+.task-options__resume-name,
+.task-options__company-name {
+    margin-top: 4px;
+    font-size: var(--text-12);
+    line-height: var(--lh-14);
+    font-weight: var(--fw-400);
+    color: var(--gray-850);
+}
+
+.task-options__resume-title {
+    padding-left: 24px;
+    margin-top: 10px;
+    font-size: var(--text-14);
+    line-height: var(--lh-20);
+    font-weight: var(--fw-500);
+    color: var(--gray-900);
+    position: relative;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: calc(50% - 8px);
+        width: 16px;
+        height: 16px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-image: url(../img/icons/icon-task-options-applicant.svg);
+    }
+}
+
+.task-options__controls {
+    grid-gap: 8px;
+}
+
+.task-options__button {
+    padding: 8px;
+    height: 56px;
+    background-color: var(--white);
+    border: 1px solid var(--gray-400);
+    border-radius: 6px;
+    font-size: var(--text-12);
+    line-height: var(--lh-14);
+    font-weight: var(--fw-400);
+    color: var(--gray-850);
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+}
