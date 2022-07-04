@@ -82,6 +82,89 @@
   }
 }
 
+@media print {
+  .noPrint {
+    display: none;
+  }
+}
+
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+          clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.body {
+  margin: 0;
+  min-width: 375px;
+  background-color: var(--white);
+  font-size: var(--text-16);
+  line-height: var(--lh-24);
+  font-weight: var(--fw-400);
+}
+
+.disabled {
+  display: none;
+}
+
+.basic-button {
+  border: none;
+  padding: 10px 0;
+  background-color: var(--orange-600);
+  width: 237px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: "Inter";
+  font-size: var(--text-16);
+  line-height: var(--lh-22);
+  font-weight: var(--fw-500);
+  color: var(--white);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.basic-button:hover {
+  background-color: var(--orange-700);
+}
+
+@media (min-width: 768px) {
+  .basic-button {
+    border-radius: 6px;
+    padding: 8px 0;
+    font-size: var(--text-14);
+    line-height: var(--lh-20);
+    font-weight: var(--fw-600);
+    width: 234px;
+  }
+}
+
 .fake-header {
   position: -webkit-sticky;
   position: sticky;
@@ -118,7 +201,6 @@
   height: 54px;
   width: 100vw;
   background-color: var(--gray-200);
-  background-image: url(../img/topnav-plug.png);
   background-repeat: no-repeat;
   background-position: center center;
 }
@@ -126,7 +208,6 @@
 @media (min-width: 768px) {
   .fake-header__wrapper {
     width: 1140px;
-    background-image: url(../img/topnav-plug-dt.png);
     position: -webkit-sticky;
     position: sticky;
     top: 0;
@@ -285,6 +366,22 @@
     position: relative;
     -webkit-transition: all 0.2s;
     transition: all 0.2s;
+  }
+}
+
+.calendar-content.side-menu-full {
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+@media (min-width: 1140px) {
+  .calendar-content.side-menu-full {
+    -webkit-transition: all 0.2s;
+    transition: all 0.2s;
+    margin-right: 0;
+    margin-left: 295px;
+    margin-left: calc((100% - 859px + 295px) / 2);
+    width: 859px;
   }
 }
 

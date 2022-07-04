@@ -21,6 +21,23 @@
         transition: $transition-basic;
     }
 
+    &.side-menu-full {
+        transition: $transition-basic;
+        @media (min-width: $tablet-width) {
+        }
+        @media (min-width: $desktop-width) {
+            transition: $transition-basic;
+            margin-right: 0;
+            margin-left: 295px;
+
+            margin-left: calc((100% - 859px + 295px) / 2);
+
+            // width: calc(1062px - 275px);
+            width: 859px;
+            // width: calc(100% - 275px - 40px - 200px);
+        }
+    }
+
     &.fullscreen-active {
         transition: $transition-basic;
 

@@ -28,13 +28,13 @@
     height: 54px;
     width: 100vw;
     background-color: var(--gray-200);
-    background-image: url(../img/topnav-plug.png);
+    // background-image: url(../img/topnav-plug.png);
     background-repeat: no-repeat;
     background-position: center center;
 
     @media (min-width: $tablet-width) {
         width: 1140px;
-        background-image: url(../img/topnav-plug-dt.png);
+        // background-image: url(../img/topnav-plug-dt.png);
         position: sticky;
         top: 0;
         z-index: 10;
