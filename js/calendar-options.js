@@ -3,7 +3,7 @@ const timeStep = 15; // менять тут шаг
 // тест настроект периода
 let START_HOUR = "08";
 // const START_MINUTES = "00";
-let END_HOUR = "16";
+let END_HOUR = "22";
 //
 
 // не менять

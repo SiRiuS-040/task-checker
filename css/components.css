@@ -95,13 +95,20 @@ video {
     -webkit-tap-highlight-color: transparent;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font: inherit;
+}
 
 /* make sure to set some focus styles for accessibility */
 
 :focus {
     outline: 0;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -120,9 +127,7 @@ section {
     display: block;
 }
 
-body {
-    line-height: 1;
-}
+
 
 ol,
 ul {
@@ -169,7 +174,6 @@ textarea {
     resize: vertical;
 }
 
-
 /**
 * Correct `inline-block` display not defined in IE 6/7/8/9 and Firefox 3.
 */
@@ -183,7 +187,6 @@ video {
     max-width: 100%;
 }
 
-
 /**
 * Prevent modern browsers from displaying `audio` without controls.
 * Remove excess height in iOS 5 devices.
@@ -194,7 +197,6 @@ audio:not([controls]) {
     height: 0;
 }
 
-
 /**
 * Address styling not present in IE 7/8/9, Firefox 3, and Safari 4.
 * Known issue: no IE 6 support.
@@ -203,7 +205,6 @@ audio:not([controls]) {
 [hidden] {
     display: none;
 }
-
 
 /**
 * 1. Correct text resizing oddly in IE 6/7 when body `font-size` is set using
@@ -227,7 +228,6 @@ a {
     text-decoration: none;
 }
 
-
 /**
 * Improve readability when focused and also mouse hovered in all browsers.
 */
@@ -236,7 +236,6 @@ a:active,
 a:hover {
     outline: 0;
 }
-
 
 /**
 * 1. Remove border when inside `a` element in IE 6/7/8/9 and Firefox 3.
@@ -250,7 +249,6 @@ img {
     /* 2 */
 }
 
-
 /**
 * Address margin not present in IE 6/7/8/9, Safari 5, and Opera 11.
 */
@@ -259,7 +257,6 @@ figure {
     margin: 0;
 }
 
-
 /**
 * Correct margin displayed oddly in IE 6/7.
 */
@@ -267,7 +264,6 @@ figure {
 form {
     margin: 0;
 }
-
 
 /**
 * Define consistent border, margin, and padding.
@@ -278,7 +274,6 @@ fieldset {
     margin: 0 2px;
     padding: 0.35em 0.625em 0.75em;
 }
-
 
 /**
 * 1. Correct color not being inherited in IE 6/7/8/9.
@@ -295,7 +290,6 @@ legend {
     *margin-left: -7px;
     /* 3 */
 }
-
 
 /**
 * 1. Correct font size not being inherited in all browsers.
@@ -318,7 +312,6 @@ textarea {
     /* 3 */
 }
 
-
 /**
 * Address Firefox 3+ setting `line-height` on `input` using `!important` in
 * the UA stylesheet.
@@ -328,7 +321,6 @@ button,
 input {
     line-height: normal;
 }
-
 
 /**
 * Address inconsistent `text-transform` inheritance for `button` and `select`.
@@ -341,7 +333,6 @@ button,
 select {
     text-transform: none;
 }
-
 
 /**
 * 1. Avoid the WebKit bug in Android 4.0.* where (2) destroys native `audio`
@@ -368,7 +359,6 @@ input[type="submit"] {
     /* 4 */
 }
 
-
 /**
 * Re-set default cursor for disabled elements.
 */
@@ -377,7 +367,6 @@ button[disabled],
 html input[disabled] {
     cursor: default;
 }
-
 
 /**
 * 1. Address box sizing set to content-box in IE 8/9.
@@ -398,7 +387,6 @@ input[type="radio"] {
     /* 3 */
 }
 
-
 /**
 * 1. Address `appearance` set to `searchfield` in Safari 5 and Chrome.
 * 2. Address `box-sizing` set to `border-box` in Safari 5 and Chrome
@@ -414,7 +402,6 @@ input[type="search"] {
     box-sizing: content-box;
 }
 
-
 /**
 * Remove inner padding and search cancel button in Safari 5 and Chrome
 * on OS X.
@@ -425,7 +412,6 @@ input[type="search"]::-webkit-search-decoration {
     -webkit-appearance: none;
 }
 
-
 /**
 * Remove inner padding and border in Firefox 3+.
 */
@@ -435,7 +421,6 @@ input::-moz-focus-inner {
     border: 0;
     padding: 0;
 }
-
 
 /**
 * 1. Remove default vertical scrollbar in IE 6/7/8/9.
@@ -448,7 +433,6 @@ textarea {
     vertical-align: top;
     /* 2 */
 }
-
 
 /**
 * Remove most spacing between table cells.
@@ -500,12 +484,9 @@ textarea {
     padding: 0;
 }
 
-
 /* ----------reset end------------- */
 
-
 /* ==================KIT fonts================== */
-
 
 /* 
 These are just patterns, 
@@ -666,7 +647,6 @@ Also added new properies for font-family and color
     color: var(--gray-800) !important;
 }
 
-
 /* ===================links font color=================== */
 
 .link_disabled {
@@ -674,15 +654,15 @@ Also added new properies for font-family and color
     cursor: default;
 }
 
-
 /* =============background color of a page=============  */
 
 body {
+    line-height: 1;
+    overflow-x: clip;
     background-color: var(--white);
     font-family: "Inter";
     width: 100vw;
 }
-
 
 /* =========padding for some elements (pop-ups, windows, etc)========= */
 
@@ -693,7 +673,6 @@ body {
 .pad-mobile {
     padding: 18px;
 }
-
 
 /* ======================space between blocks====================== */
 
@@ -709,7 +688,6 @@ body {
     justify-content: space-around;
 }
 
-
 /* =================center position for titles and text=============== */
 
 .center-txt-element {
@@ -720,7 +698,6 @@ body {
 .jc-center {
     justify-content: center;
 }
-
 
 /* ===========================main white section=========================== */
 
@@ -742,7 +719,6 @@ body {
     width: 100vw;
 }
 
-
 /* ====================properties for vertical/horizontal position ====================*/
 
 .flex-row {
@@ -762,7 +738,6 @@ body {
 .center-block {
     justify-content: center;
 }
-
 
 /* =================================custom -green--700 checkbox================================= */
 
@@ -834,7 +809,6 @@ body {
     transition: 0.2s ease-out;
 }
 
-
 /* =================================custom -blue--700 checkbox================================= */
 
 .blue-checkbox[type="checkbox"]:checked:before,
@@ -895,9 +869,7 @@ body {
     background-color: var(--blue-600);
 }
 
-
 /* =========================buttons========================= */
-
 
 /* =================================custom -orange--600 checkbox================================= */
 
@@ -968,7 +940,6 @@ body {
     opacity: 0.8;
     transition: 0.2s ease-out;
 }
-
 
 /* ==============type of main buttons w/ backgtound color, w/o border and colors============== */
 
@@ -1057,7 +1028,6 @@ body {
     background-color: var(--purple-700);
 }
 
-
 /* dark-green */
 
 .d-green-btn {
@@ -1071,7 +1041,6 @@ body {
 .d-green-btn:active {
     background-color: var(--emerald-500);
 }
-
 
 /* =================main button w/ border, w/o colors================= */
 
@@ -1099,7 +1068,6 @@ body {
 .main-border-btn.green:active {
     background-color: var(--green-100);
 }
-
 
 /* dark-green */
 
@@ -1168,9 +1136,7 @@ body {
     background-color: var(--purple-200);
 }
 
-
 /* switcher */
-
 
 /* ================================ */
 
@@ -1211,20 +1177,19 @@ body {
     transition: 0.4s;
 }
 
-input:checked+.header-menu__slider {
+input:checked + .header-menu__slider {
     background-color: var(--blue-600);
 }
 
-input:focus+.header-menu__slider {
+input:focus + .header-menu__slider {
     box-shadow: 0 0 1px var(--blue-600);
 }
 
-input:checked+.header-menu__slider:before {
+input:checked + .header-menu__slider:before {
     -webkit-transform: translateX(11px);
     -ms-transform: translateX(11px);
     transform: translateX(11px);
 }
-
 
 /* Rounded sliders */
 
@@ -1236,12 +1201,10 @@ input:checked+.header-menu__slider:before {
     border-radius: 50%;
 }
 
-
 /* <label class="switch">
   <input type="checkbox">
   <span class="slider round"></span>
 </label> */
-
 
 /* ==================================== */
 
@@ -1282,15 +1245,15 @@ input:checked+.header-menu__slider:before {
     transition: 0.4s;
 }
 
-input:checked+.header-menu__slider.dark-theme {
+input:checked + .header-menu__slider.dark-theme {
     background-color: var(--blue-600);
 }
 
-input:focus+.header-menu__slider.dark-theme {
+input:focus + .header-menu__slider.dark-theme {
     box-shadow: 0 0 1px var(--blue-600);
 }
 
-input:checked+.header-menu__slider.dark-theme:before {
+input:checked + .header-menu__slider.dark-theme:before {
     -webkit-transform: translateX(11px);
     -ms-transform: translateX(11px);
     transform: translateX(11px);

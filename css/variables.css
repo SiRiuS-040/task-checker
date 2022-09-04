@@ -25,6 +25,7 @@
     --blue-800: #0b6fc5;
     --blue-900: #1163a9;
     --blue-1000: #334866;
+    --red-50: #FFF5F1;
     --red-100: #ffefe7;
     --red-200: #ffcbb4;
     --red-300: #ff5a50;
@@ -33,6 +34,7 @@
     --red-600: #db1216;
     --red-700: #cc0022;
     --red-800: #af001d;
+    --green-50: #F0FAEF;
     --green-100: #e0ffdd;
     --green-400: #afddab;
     --green-500: #a1e79b;
@@ -64,6 +66,9 @@
     --purple-500: #d75dc3;
     --purple-600: #ad3299;
     --purple-700: #882478;
+    --purple-800: #704CD7;
+
+    --emerald-50: #E5F7F3;
     --emerald-100: #cbeee6;
     --emerald-200: #a8e3d5;
     --emerald-300: #41a996;
