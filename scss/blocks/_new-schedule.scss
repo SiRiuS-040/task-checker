@@ -32,6 +32,11 @@
     font-size: var(--text-18);
     line-height: var(--lh-24);
     font-weight: var(--fw-500);
+    width: 100%;
+
+    &::placeholder {
+        color: var(--gray-300);
+    }
 }
 
 .new-schedule__select-data {
